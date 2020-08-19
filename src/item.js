@@ -1,32 +1,30 @@
+import { ctx, canvas } from "./index";
  class Item {
-    constructor(name, type, img) {
+    constructor(name, type, image) {
         this.name = name;
         this.type = type;
         this.image = new Image();
-        this.image.src = img;
+        this.image.src = image;
         this.velocity = {
-            x : 0,
-            y : 0
+            x : 1,
+            y : 1
         };
         this.x = 0;
         this.y = 0;
-        this.size = 50;
+        this.size = 30;
         this.gravity = 0.1;
         this.friction = 0.8;
         this.frames = 100;
         this.opacity = 1;
     }
 
-    draw(ctx) {
-        this.image.unload = function (){
-            ctx.drawImage(this.image, this.size, this.size);
-            console.log(this.image);
-        };
-        return this.image.unload();
-    }
+    draw(x, y) {
+        ctx.drawImage(this.image, x, y, this.size, this.size);
+    } 
 
-    update(){
-        this.draw();
+    update(x, y){
+        this.draw(x, y);
+       this.x += this.velocity.x;
     }
 
 }
