@@ -56,46 +56,50 @@ const list = [
     iceButterfly, dragon, blue, tulip, grapes, //30-34
     blazingStar, ametyst, por, wood, lumber]; //35 -39
 
-const potion1 = [[list[0], list[11], list[22], list[33]], "./assets/Results/bottle1.png"];
-const potion2 = [[list[1], list[12], list[23], list[34]], "./assets/Results/bottle2.png"];
-const potion3 = [[list[2], list[13], list[24], list[35]], "./assets/Results/bottle3.png"];
-const potion4 = [[list[3], list[14], list[25], list[36]], "./assets/Results/bottle4.png"];
-const potion5 = [[list[4], list[15], list[26], list[37]], "./assets/Results/bottle5.png"];
-const potion6 = [[list[5], list[17], list[27], list[37]], "./assets/Results/bottle6.png"];
-const potion7 = [[list[6], list[18], list[28], list[37]], "./assets/Results/bottle7.png"];
-const potion8 = [[list[7], list[19], list[29], list[30]], "./assets/Results/bottle8.png"];
-const potion9 = [[list[8], list[10], list[20], list[31]], "./assets/Results/bottle9.png"];
-const potion10 = [[list[9], list[19], list[21], list[32]], "./assets/Results/bottle10.png"];
-const potion11 = [[list[0], list[23], list[34], list[23]], "./assets/Results/bottle11.png"];
-const potion12 = [[list[1], list[21], list[0], list[1]], "./assets/Results/bottle12.png"];
-const potion13 = [[list[2], list[22], list[0], list[1]], "./assets/Results/bottle13.png"];
-const potion14 = [[list[3], list[23], list[0], list[1]], "./assets/Results/bottle14.png"];
-const potion15 = [[list[4], list[24], list[0], list[1]], "./assets/Results/bottle15.png"];
-const potion16 = [[list[5], list[25], list[0], list[1]], "./assets/Results/bottle16.png"];
-const potion17 = [[list[6], list[26], list[0], list[1]], "./assets/Results/bottle17.png"];
-const potion18 = [[list[7], list[27], list[0], list[1]], "./assets/Results/bottle18.png"];
-const potion19 = [[list[7], list[28], list[0], list[1]], "./assets/Results/bottle19.png"];
-const potion20 = [[list[9], list[29], list[0], list[1]], "./assets/Results/bottle20.png"];
-const potion21 = [[list[0], list[30], list[0], list[1]], "./assets/Results/bottle21.png"];
-const potion22 = [[list[1], list[31], list[0], list[1]], "./assets/Results/bottle22.png"];
-const potion23 = [[list[2], list[0], list[0], list[0]], "./assets/Results/bottle23.png"];
-const potion24 = [[list[3], list[29], list[0], list[1]], "./assets/Results/bottle24.png"];
-const potion25 = [[list[4], list[30], list[0], list[1]], "./assets/Results/bottle25.png"];
-const potion26 = [[list[5], list[31], list[0], list[1]], "./assets/Results/bottle26.png"];
-const potion27 = [[list[6], list[32], list[0], list[1]], "./assets/Results/bottle27.png"];
-const potion28 = [[list[7], list[33], list[0], list[1]], "./assets/Results/bottle28.png"];
-const potion29 = [[list[8], list[34], list[0], list[1]], "./assets/Results/bottle29.png"];
-const potion30 = [[list[9], list[35], list[0], list[1]], "./assets/Results/bottle30.png"];
-const potion31 = [[list[0], list[36], list[0], list[1]], "./assets/Results/bottle31.png"];
-const potion32 = [[list[1], list[37], list[0], list[1]], "./assets/Results/bottle32.png"];
-const potion33 = [[list[2], list[37], list[0], list[1]], "./assets/Results/bottle33.png"];
-const potion34 = [[list[3], list[37], list[0], list[1]], "./assets/Results/bottle34.png"];
-const potion35 = [[list[4], list[0], list[0], list[1]], "./assets/Results/bottle35.png"];
-const potion36 = [[list[5], list[1], list[0], list[1]], "./assets/Results/bottle36.png"];
-const potion37 = [[list[6], list[2], list[0], list[1]], "./assets/Results/bottle37.png"];
-const potion38 = [[list[7], list[3], list[0], list[1]], "./assets/Results/bottle38.png"];
-const potion39 = [[list[8], list[4], list[0], list[1]], "./assets/Results/bottle39.png"];
-const potion40 = [[list[9], list[5], list[0], list[1]], "./assets/Results/bottle40.png"];
+function idx(){
+    return Math.floor(Math.random()* list.length);
+}
+
+const potion1 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle1.png"];
+const potion2 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle2.png"];
+const potion3 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle3.png"];
+const potion4 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle4.png"];
+const potion5 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle5.png"];
+const potion6 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle6.png"];
+const potion7 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle7.png"];
+const potion8 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle8.png"];
+const potion9 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle9.png"];
+const potion10 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle10.png"];
+const potion11 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle11.png"];
+const potion12 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle12.png"];
+const potion13 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle13.png"];
+const potion14 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle14.png"];
+const potion15 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle15.png"];
+const potion16 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle16.png"];
+const potion17 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle17.png"];
+const potion18 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle18.png"];
+const potion19 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle19.png"];
+const potion20 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle20.png"];
+const potion21 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle21.png"];
+const potion22 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle22.png"];
+const potion23 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle23.png"];
+const potion24 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle24.png"];
+const potion25 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle25.png"];
+const potion26 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle26.png"];
+const potion27 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle27.png"];
+const potion28 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle28.png"];
+const potion29 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle29.png"];
+const potion30 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle30.png"];
+const potion31 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle31.png"];
+const potion32 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle32.png"];
+const potion33 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle33.png"];
+const potion34 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle34.png"];
+const potion35 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle35.png"];
+const potion36 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle36.png"];
+const potion37 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle37.png"];
+const potion38 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle38.png"];
+const potion39 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle39.png"];
+const potion40 = [[list[idx()], list[idx()], list[idx()], list[idx()]], "./assets/Results/bottle40.png"];
 
 const recipes = [potion1, potion2, potion3, potion4, potion5, potion6, potion7, potion8,
     potion9, potion13, potion17, potion21, potion25, potion29, potion33, potion37,
@@ -113,6 +117,12 @@ addEventListener('resize', () => {
     canvas.height = innerHeight;
 
     init();
+});
+
+addEventListener("click", (event)=>{
+    bottles.forEach(item =>{
+        item.respond();
+    });
 });
 
 const mouse = {
@@ -156,7 +166,11 @@ class Shard{
         ctx.beginPath();
         ctx.fillStyle = "white";
         ctx.globalAlpha = 0.4;
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        // ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x+7, this.y-7);
+        ctx.lineTo(this.x-7, this.y-7);
+        ctx.lineTo(this.x-14.5, this.y);
         ctx.shadowColor = "#EEF8FB";
         ctx.shadowOffsetX = 3;
         ctx.shadowOffsetY = 3;
@@ -167,7 +181,7 @@ class Shard{
     update() {
         this.draw();
 
-        if (this.y + this.size + this.velocity.y > canvas.height) {
+        if (this.y + this.size +this.velocity.y > canvas.height-50) {
             this.velocity.y = -this.velocity.y * this.friction;
         }
         else {
@@ -194,7 +208,7 @@ class Potion {
         this.size = 70;
         this.velocity = {
             x: 0,
-            y: Math.random() * 5 + 1
+            y: Math.random() * 2 + 1
         };
         this.x = x;
         this.y = y;
@@ -203,22 +217,46 @@ class Potion {
     }
 
     draw() {
+        ctx.save();
+        ctx.globalAlpha = this.existance;
         ctx.drawImage(this.image, this.x, this.y, this.size, this.size);
+        ctx.restore();
     }
 
     update() {
-        this.draw();
-        if (this.y + this.size + this.velocity.y > canvas.height) {
+        if (this.y + this.size + this.velocity.y > canvas.height-45) {
+            this.draw();
             this.explode();
             this.existance = 0;
-        } else {
-            this.y += this.velocity.y;
+        } else if(this.velocity.y){
+            this.draw();
+            this.y += this.velocity.y;   
+        }else{
+            this.break();
+            
         }
+    }
 
+    respond(){
+        if (this.x + this.size/2 >= (mouse.x - 40) && this.x + this.size/2 <= (mouse.x + 40) && 
+        this.y + this.size/2 >= (mouse.y - 40) && this.y + this.size/2<= (mouse.y + 40)){
+        
+            this.velocity.x = 0;
+            this.velocity.y = 0;
+
+        }
+        
+    }
+    break(){
+       for (let i = 0; i < 15; i++) {
+            ingredients.push(new Shard(this.x, this.y));
+            
+        }
+        this.existance = 0;
     }
 
     explode() {
-        for (let i = 0; i < 7; i++) {
+        for (let i = 0; i < 10; i++) {
             ingredients.push(new Shard(this.x, this.y));
             
         }
@@ -234,8 +272,8 @@ class Item {
         this.image = new Image();
         this.image.src = image;
         this.velocity = {
-            x: Math.random() * 5,
-            y: Math.random() * 5
+            x: Math.random() * 3,
+            y: Math.random() * 3
         };
         this.x = x;
         this.y = y;
@@ -248,13 +286,18 @@ class Item {
 
 
     draw() {
+        ctx.save();
         ctx.drawImage(this.image, this.x, this.y, this.size, this.size);
+        ctx.shadowColor = "#EEF8FB";
+        ctx.shadowOffsetX = 3;
+        ctx.shadowOffsetY = 3;
+        ctx.restore();
     }
 
     update() {
         this.draw();
 
-        if (this.y + this.size+ this.velocity.y > canvas.height) {
+        if (this.y + this.size+ this.velocity.y > canvas.height-50) {
             this.velocity.y = -this.velocity.y * this.friction;
         }
         else {
@@ -279,7 +322,7 @@ let ingredients;
 function init(){
     bottles = [];
     ingredients = [];
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 10; i++) {
         let j = Math.floor(Math.random() * recipes.length);
         let x = Math.floor((Math.random() * (canvas.width - 70)));
         let y = Math.floor(0 - Math.random() * canvas.height);
@@ -287,6 +330,15 @@ function init(){
         bottles.push(bottle);
     }
 
+}
+
+function ground(){
+    ctx.save()
+    ctx.beginPath();
+    ctx.fillStyle = "black";
+    ctx.rect(0, canvas.height-50, canvas.width, canvas.height);
+    ctx.fill();
+    ctx.restore();
 }
 
 function background(){
@@ -298,22 +350,26 @@ function background(){
     ctx.fillStyle = grd;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
-
+function destroyBottle(idx){
+    bottles.splice(idx, 1);
+    let j = Math.floor(Math.random() * recipes.length);
+    let x = Math.floor((Math.random() * (canvas.width - 70)));
+    let y = Math.floor(0 - Math.random() * canvas.height);
+    bottles.push(new Potion(recipes[j][0], recipes[j][1], x, y));
+}
 function animate(){
     requestAnimationFrame(animate);
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     background();
+    ground();
 
     bottles.forEach((bottle, idx) =>{
         bottle.update();
-        if (bottle.existance === 0){
-            bottles.splice(idx, 1);
-            let j = Math.floor(Math.random() * recipes.length);
-            let x = Math.floor((Math.random() * (canvas.width - 70)));
-            let y = Math.floor(0 - Math.random() * canvas.height);
-            bottles.push(new Potion(recipes[j][0], recipes[j][1], x, y));
+        if (bottle.existance <= 0){
+            destroyBottle(idx);
         } 
+
     });
 
     ingredients.forEach((ingredient, idx)=>{
