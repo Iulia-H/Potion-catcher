@@ -114,7 +114,7 @@ canvas.height = innerHeight;
 
 addEventListener('resize', () => {
     canvas.width = innerWidth;
-    canvas.height = innerHeight;
+    canvas.height = innerHeight ;
 
     init();
 });
@@ -198,6 +198,18 @@ class Shard{
     }
 
 }
+let game = false;
+document.addEventListener('keyup', event => {
+    if (event.code === 'Space') {
+        if(game === false){
+          
+            game = true;
+        }else{
+            game = false;
+           
+        }
+    }
+})
 
 class Potion {
     constructor(recipe, image, x, y, existance = 1) {
@@ -208,7 +220,7 @@ class Potion {
         this.size = 70;
         this.velocity = {
             x: 0,
-            y: Math.random() * 2 + 1
+            y: Math.random() * 2+ 0.5
         };
         this.x = x;
         this.y = y;
@@ -357,12 +369,51 @@ function destroyBottle(idx){
     let y = Math.floor(0 - Math.random() * canvas.height);
     bottles.push(new Potion(recipes[j][0], recipes[j][1], x, y));
 }
+
+
+
+
+
+if (game === true) {
+    init(); 
+    animate();
+}
+
+// function zapz(){
+//     ctx.save();
+//     ctx.beginPath();
+//     ctx.lineWidth = 6;
+//     ctx.strokeStyle = "blue";
+//     ctx.shadowColor = "#EEF8FB";
+//     ctx.shadowOffsetX = 3;
+//     ctx.shadowOffsetY = 3;
+
+//     ctx.moveTo(canvas.width/2, canvas.height - 50);
+//     let x = canvas.width/2;
+//     let y = canvas.height-50;
+//     for (let i = 0; i < 40; i++) {
+//         x -= Math.random()* 20;
+//         y -= Math.random()* 20;
+//         ctx.lineTo(x, y);  
+//     }
+//     ctx.lineTo(mouse.x -40, mouse.y);
+//     ctx.stroke();
+//     ctx.beginPath();
+//     ctx.moveTo(canvas.width / 2, canvas.height - 50);
+//     ctx.lineTo(mouse.x + 40, mouse.y);
+//     ctx.stroke();
+//     ctx.restore();
+
+// }
+
 function animate(){
+
     requestAnimationFrame(animate);
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     background();
     ground();
+    // zapz();
 
     bottles.forEach((bottle, idx) =>{
         bottle.update();
