@@ -279,7 +279,7 @@ function draw(){
     });
 
     drawCursor();
-    console.log("drawn");
+    console.log("I have been drawingn");
 }
 
 
