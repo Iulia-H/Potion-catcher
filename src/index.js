@@ -18,6 +18,7 @@ addEventListener("click", (event)=>{
     bottles.forEach(item =>{
         item.respond();
     });
+
 });
 
 const mouse = {
@@ -31,16 +32,35 @@ addEventListener("mousemove", (event)=>{
 
 });
 
+const body = document.body;
+let menu = document.createElement("div");
+menu.hidden = false;
+menu.classList.add("menu");
+
+let instructions = document.createElement("p");
+// instructions.hidden = false;
+instructions.classList.add("instructions");
+menu.appendChild(instructions);
+instructions.innerHTML = "Welcome to Potion Catcher" + "<br />" + "Catch the potions before they reach the ground!"
+    + "<br />" + "Click on a potion to save it and yourself from unknown circumstances."
+    + "<br />" + "Press Space to start or return to this menu.";
+
+let counter = document.createElement("div");
+counter.classList.add("counter");
+let count = 0;
+counter.innerText = `Potions: ${count}`;
+
+let lives = document.createElement("div");
+lives.classList.add("lives");
+let life = 40;
+lives.innerText = `Lives remaining: ${life}`;
+
+body.appendChild(menu);
+body.appendChild(counter);
+body.appendChild(lives);
 
 
-function drawCursor() {
-    ctx.save();
-    ctx.beginPath();
-    ctx.strokeStyle = "white";
-    ctx.arc(mouse.x, mouse.y, 40, 0, Math.PI * 2);
-    ctx.stroke();
-    ctx.restore();
-}
+
 
 //Objects
 
@@ -65,7 +85,6 @@ class Shard{
         ctx.beginPath();
         ctx.fillStyle = "white";
         ctx.globalAlpha = 0.4;
-        // ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.moveTo(this.x, this.y);
         ctx.lineTo(this.x+7, this.y-7);
         ctx.lineTo(this.x-7, this.y-7);
@@ -108,7 +127,7 @@ class Potion {
         this.size = 70;
         this.velocity = {
             x: 0,
-            y: Math.random() * 2 + 0.5
+            y: Math.random() * 1.5 + 0.5
         };
         this.x = x;
         this.y = y;
@@ -123,6 +142,9 @@ class Potion {
     }
 
     update() {
+        if (life<=0){
+            this.velocity.y = 10;
+        }
         if (this.y + this.size + this.velocity.y > canvas.height-45) {
             this.draw();
             this.explode();
@@ -146,12 +168,14 @@ class Potion {
         }
         
     }
+
     break(){
        for (let i = 0; i < 15; i++) {
             ingredients.push(new Shard(this.x, this.y));
             
         }
         this.existance = 0;
+        count += 1;
     }
 
     explode() {
@@ -162,6 +186,9 @@ class Potion {
         this.recipe.forEach(item=>{
             ingredients.push(new Item(item, this.x, this.y));
         });
+        if (life> 0){
+            life -= 1;
+        }
     }   
 }
 
@@ -214,6 +241,43 @@ class Item {
 
 }
 
+// Use for a better cursor halo
+// class Cursor { 
+//     constructor(color = "white") {
+//         this.velocity = 0.05;
+//         this.x =  mouse.x + 20;
+//         this.y = mouse.y + 20;
+//         this.radians = Math.random() * Math.PI * 2;
+//         this.place = (Math.random() * 65 + Math.random() * 75)/2;
+//         this.color = color;
+//     }
+
+
+//     draw() {
+//         ctx.save();
+//         ctx.beginPath();
+//         ctx.globalAlpha = 0.5;
+//         ctx.strokeStyle = this.color;
+//         ctx.arc(this.x, this.y, 5, 0, Math.PI * 2, false);
+//         ctx.stroke();
+//         ctx.fillStyle = this.color;
+//         ctx.fill();
+//         // ctx.stroke()
+//         ctx.shadowOffsetX = 4;
+//         ctx.shadowOffsetY = 4;
+//         ctx.closePath();
+//         ctx.restore();
+//     }
+
+//     update() {
+//         this.radians += this.velocity;
+//         this.x = mouse.x + Math.cos(this.radians) * this.place;
+//         this.y = mouse.y + Math.sin(this.radians) * this.place;
+//         this.draw();
+
+//     }
+// }
+
 //Logic
 
 let bottles;
@@ -251,19 +315,6 @@ function background(){
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-function destroyBottle(idx){
-    bottles.splice(idx, 1);
-    let j = Math.floor(Math.random() * recipes.length);
-    let x = Math.floor((Math.random() * (canvas.width - 70)));
-    let y = Math.floor(0 - Math.random() * canvas.height);
-    bottles.push(new Potion(recipes[j][0], recipes[j][1], x, y));
-}
-
-
-
-
-
-
 function draw(){
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -277,37 +328,96 @@ function draw(){
     ingredients.forEach((ingredient) => {
         ingredient.draw();
     });
+}
 
-    drawCursor();
-    console.log("I have been drawingn");
+function cursor(){
+    let x = mouse.x;
+    let y = mouse.y;
+    ctx.save();
+    let grd = ctx.createLinearGradient(x, y, x+20, y+ 20);
+    grd.addColorStop(0, "#F8F9FA");
+    grd.addColorStop(0.5, "#E9ECEF");
+    grd.addColorStop(1, "#DEE2E6");
+    ctx.beginPath();
+    ctx.strokeStyle = grd;
+    ctx.arc(x, y, 40, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.shadowOffsetX = 5;
+    ctx.shadowOffsetY = 5;
+    ctx.restore();
+}
+
+function drawCursor() {
+    if (paused) {
+        draw();
+        cursor();
+        rederFrames(function () {
+            drawCursor();
+        });
+    } else {
+        cursor();
+    }
+}
+
+function destroyBottle(idx){
+    bottles.splice(idx, 1);
+    let j = Math.floor(Math.random() * recipes.length);
+    let x = Math.floor((Math.random() * (canvas.width - 70)));
+    let y = Math.floor(0 - Math.random() * canvas.height);
+    bottles.push(new Potion(recipes[j][0], recipes[j][1], x, y));
 }
 
 
+function animate() {
+    counter.innerText = `Potions: ${count}`;
+    lives.innerText = `Lives remaining: ${life}`;
+    if (life <= 0) {
+        setTimeout(function () {
+            location.reload();
+        }, 3000);
+    }
+    if ( !paused ){
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        background();
+        ground();
 
-function animate(){
-    ctx.fillStyle = "white";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    background();
-    ground();
+        bottles.forEach((bottle, idx) => {
+            bottle.update();
+            if (bottle.existance <= 0) {
+                destroyBottle(idx);
+                
+            }
 
-    bottles.forEach((bottle, idx) =>{
-        bottle.update();
-        if (bottle.existance <= 0){
-            destroyBottle(idx);
-        } 
+        });
 
-    });
-
-    ingredients.forEach((ingredient, idx)=>{
-        ingredient.update();
-        if (ingredient.frames === 0){
-            ingredients.splice(idx, 1);
-        }
-    });
-    drawCursor();
+        ingredients.forEach((ingredient, idx) => {
+            ingredient.update();
+            if (ingredient.frames === 0) {
+                ingredients.splice(idx, 1);
+            }
+        });
+    
+        rederFrames(function () {
+            animate();
+        });
+        drawCursor();
+    }else{
+        rederFrames(function () {
+            drawCursor();
+        });
+        
+    }
 
     
 }
+
+ window.rederFrames = (function (callback) {
+    return window.requestAnimationFrame ||
+        function (callback) {
+           setTimeout(callback, 1000 / 60);
+        };
+})();
 
 
 let paused = true;
@@ -315,26 +425,25 @@ let paused = true;
 function togglePause(){
     if (paused === false) {
         paused = true;
-        requestAnimationFrame(draw);
-        console.log("paused");
+        animate();
     } 
     else {
-        
         paused = false;
-        requestAnimationFrame(animate);
-        console.log("redone");
+        animate();
     }
 }
 
 document.addEventListener('keyup', event => {
     if (event.code === 'Space') {
         togglePause();
+        menu.hidden = !menu.hidden;
+        // instructions.hidden = !instructions.hidden;
     }
 });
 
 
 init();
-draw();
+animate();
 drawCursor();
 
 
