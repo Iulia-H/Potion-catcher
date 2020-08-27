@@ -52,7 +52,7 @@ counter.innerText = `Potions: ${count}`;
 
 let lives = document.createElement("div");
 lives.classList.add("lives");
-let life = 15;
+let life = 10;
 lives.innerText = `Lives remaining: ${life}`;
 
 body.appendChild(menu);
