@@ -74,7 +74,7 @@ class Shard{
         this.y = y;
         this.size = 7;
         this.gravity = 0.1;
-        this.friction = 0.8;
+        this.friction = 0.7;
         this.frames = 200;
         this.opacity = 1;
     }
