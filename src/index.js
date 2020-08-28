@@ -52,7 +52,7 @@ counter.innerText = `Potions: ${count}`;
 
 let lives = document.createElement("div");
 lives.classList.add("lives");
-let life = 10;
+let life = 15;
 lives.innerText = `Lives remaining: ${life}`;
 
 body.appendChild(menu);
@@ -125,13 +125,23 @@ class Potion {
         this.image = new Image();
         this.image.src = image;
         this.size = 70;
-        this.velocity = {
-            x: 0,
-            y: Math.random() * 1.5 + 0.5
-        };
         this.x = x;
         this.y = y;
         this.existance = existance;
+        if (life <= 0) {
+            this.velocity = 10;
+        }else if (count >= 0){
+            this.velocity = Math.random() * 1.5 + 0.5;
+        }else if(count >=15){
+            this.velocity = Math.random() * 3 + 1;
+        }else if (count >=30){
+            this.velocity = Math.random() * 4.5 + 1.5;
+        }else if (count >= 45){
+            this.velocity = Math.random() * 6 + 2;
+        }
+        
+     
+
     }
 
     draw() {
@@ -142,16 +152,14 @@ class Potion {
     }
 
     update() {
-        if (life<=0){
-            this.velocity.y = 10;
-        }
-        if (this.y + this.size + this.velocity.y > canvas.height-45) {
+
+        if (this.y + this.size + this.velocity > canvas.height-45) {
             this.draw();
             this.explode();
             this.existance = 0;
-        } else if(this.velocity.y){
+        } else if(this.velocity){
             this.draw();
-            this.y += this.velocity.y;   
+            this.y += this.velocity;   
         }else{
             this.break();
             
@@ -162,8 +170,7 @@ class Potion {
         if (this.x + this.size/2 >= (mouse.x - 40) && this.x + this.size/2 <= (mouse.x + 40) && 
         this.y + this.size/2 >= (mouse.y - 40) && this.y + this.size/2<= (mouse.y + 40)){
         
-            this.velocity.x = 0;
-            this.velocity.y = 0;
+            this.velocity = 0;
 
         }
         
