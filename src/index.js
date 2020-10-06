@@ -4,6 +4,13 @@ export const ctx = canvas.getContext("2d");
 canvas.style.cursor = "crosshair";
 canvas.width = innerWidth;
 canvas.height = innerHeight;
+import ReactGA from 'react-ga';
+
+function initializeReactGA() {
+    ReactGA.initialize('UA-123791717-1');
+    ReactGA.pageview('/homepage');
+}
+initializeReactGA();
 
 
 //Initialize
