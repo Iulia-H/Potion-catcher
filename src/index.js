@@ -7,8 +7,9 @@ canvas.height = innerHeight;
 import ReactGA from 'react-ga';
 
 function initializeReactGA() {
-    ReactGA.initialize('UA-123791717-1');
-    ReactGA.pageview('/homepage');
+    ReactGA.initialize('UA-179838872-1');
+    let page = window.location.hash;
+    ReactGA.pageview(`/${page}`);
 }
 initializeReactGA();
 
